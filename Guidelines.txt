@@ -1,0 +1,5 @@
+Project Guidelines
+==================
+
+Standard tile size in pixels: 16x16
+Image source files are created with aseprite.

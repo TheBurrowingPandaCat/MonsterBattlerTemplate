@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bldihnec4nt6r"]
+[gd_scene load_steps=3 format=3 uid="uid://bldihnec4nt6r"]
 
 [ext_resource type="Script" path="res://TestScript.gd" id="1_0tqyt"]
+[ext_resource type="Texture2D" uid="uid://dfpfbl6rbb5fk" path="res://Assets/Images/Exports/Basic16x16Sprite.png" id="2_wp8qs"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_0tqyt")
+
+[node name="Basic16x16Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(302, 239)
+scale = Vector2(4, 4)
+texture = ExtResource("2_wp8qs")
