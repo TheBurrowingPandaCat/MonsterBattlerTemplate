@@ -1,18 +1,10 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bon7f83wuipbx"]
 
-[ext_resource type="Texture2D" uid="uid://c0esukjo6mfp6" path="res://Assets/Images/Exports/BasicGroundTiles.png" id="1_6cw81"]
+[ext_resource type="Texture2D" uid="uid://dfpfbl6rbb5fk" path="res://Assets/Images/Exports/Basic16x16Sprite.png" id="1_hs85d"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ua8hk"]
-texture = ExtResource("1_6cw81")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2qmnc"]
+texture = ExtResource("1_hs85d")
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
 
 [resource]
-sources/0 = SubResource("TileSetAtlasSource_ua8hk")
+sources/1 = SubResource("TileSetAtlasSource_2qmnc")
