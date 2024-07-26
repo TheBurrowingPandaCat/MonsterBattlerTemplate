@@ -36,7 +36,10 @@ func _process(delta):
 	# Handle movement
 	if is_moving:
 		movement_parameter = movement_parameter + delta * movement_speed
-		position = origin_position.lerp(target_position, min(movement_parameter, 1.0))
+		# Multiply and divide with scale keeps it pixel perfect
+		position = floor(origin_position.lerp(target_position, \
+			min(movement_parameter, 1.0)) / display_scale) * display_scale
+		#position = origin_position.lerp(target_position, min(movement_parameter, 1.0))
 		
 		if !frame_has_advanced && movement_parameter >= 0.5:
 			advance_frame_offset()
