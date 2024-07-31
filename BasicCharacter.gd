@@ -4,6 +4,7 @@ extends Sprite2D
 @export var display_scale: int = 4
 @export var tile_size: int = 16
 @export var barrier_layer_index: int = 1
+@export var event_layer_index: int = 2
 
 # Position Variables
 var current_tile: Vector2i
@@ -22,6 +23,8 @@ var frame_has_advanced: bool
 
 # Tilemap handling
 @onready var first_grass_tile_map = $"../FirstGrassTileMap"
+@onready var second_grass_tile_map = $"../SecondGrassTileMap"
+var current_tile_map
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +35,7 @@ func _ready():
 	base_frame = 0
 	current_frame_offset = 0
 	frame_has_advanced = false
+	current_tile_map = first_grass_tile_map
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,6 +55,8 @@ func _process(delta):
 		if movement_parameter >= 1.0:
 			is_moving = false
 			current_tile = Vector2i(floor(position.x / real_tile_distance), floor(position.y / real_tile_distance))
+			if is_tile_event(current_tile):
+				swap_tile_maps()
 	
 	if !is_moving:
 		if Input.is_action_pressed("up"):
@@ -109,4 +115,17 @@ func advance_frame_offset() -> void:
 
 
 func is_tile_traversable(tile_coords: Vector2i) -> bool:
-	return not first_grass_tile_map.get_cell_tile_data(barrier_layer_index, tile_coords) is TileData
+	return not current_tile_map.get_cell_tile_data(barrier_layer_index, tile_coords) is TileData
+
+
+func is_tile_event(tile_coords: Vector2i) -> bool:
+	return current_tile_map.get_cell_tile_data(event_layer_index, tile_coords) is TileData
+
+func swap_tile_maps() -> void:
+	if current_tile_map == first_grass_tile_map:
+		current_tile_map = second_grass_tile_map
+	else:
+		current_tile_map = first_grass_tile_map
+	
+	first_grass_tile_map.visible = not first_grass_tile_map.visible
+	second_grass_tile_map.visible = not second_grass_tile_map.visible

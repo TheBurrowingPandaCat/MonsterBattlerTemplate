@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dupm46vovvjlh"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dupm46vovvjlh"]
 
 [ext_resource type="Texture2D" uid="uid://bktyfgqm0x60h" path="res://Assets/Images/Exports/GrassExample.png" id="1_shcfv"]
 [ext_resource type="Texture2D" uid="uid://erl5l7aa2hxs" path="res://Assets/Images/Exports/BarrierPost.png" id="2_pp1b3"]
+[ext_resource type="Texture2D" uid="uid://dfpfbl6rbb5fk" path="res://Assets/Images/Exports/Basic16x16Sprite.png" id="2_xggkw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c5xda"]
 texture = ExtResource("1_shcfv")
@@ -20,6 +21,10 @@ texture = ExtResource("1_shcfv")
 2:2/0 = 0
 3:2/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnm34"]
+texture = ExtResource("2_xggkw")
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qkosp"]
 texture = ExtResource("2_pp1b3")
 0:0/0 = 0
@@ -27,3 +32,4 @@ texture = ExtResource("2_pp1b3")
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_c5xda")
 sources/2 = SubResource("TileSetAtlasSource_qkosp")
+sources/1 = SubResource("TileSetAtlasSource_dnm34")
