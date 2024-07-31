@@ -61,50 +61,30 @@ func _process(delta):
 	if !is_moving:
 		if Input.is_action_pressed("up"):
 			base_frame = 12
-			if is_tile_traversable(current_tile + Vector2i.UP):
-				is_moving = true
-				origin_position = position
-				target_position = position + Vector2.UP * real_tile_distance
-				movement_parameter = maxf(movement_parameter - 1.0, 0.0)
-				advance_frame_offset()
-				frame_has_advanced = false
-			else:
-				frame = base_frame + current_frame_offset
+			move_to_new_tile(current_tile + Vector2i.UP, Vector2.UP)
 		elif Input.is_action_pressed("down"):
 			base_frame = 0
-			if is_tile_traversable(current_tile + Vector2i.DOWN):
-				is_moving = true
-				origin_position = position
-				target_position = position + Vector2.DOWN * real_tile_distance
-				movement_parameter = maxf(movement_parameter - 1.0, 0.0)
-				advance_frame_offset()
-				frame_has_advanced = false
-			else:
-				frame = base_frame + current_frame_offset
+			move_to_new_tile(current_tile + Vector2i.DOWN, Vector2.DOWN)
 		elif Input.is_action_pressed("left"):
 			base_frame = 4
-			if is_tile_traversable(current_tile + Vector2i.LEFT):
-				is_moving = true
-				origin_position = position
-				target_position = position + Vector2.LEFT * real_tile_distance
-				movement_parameter = maxf(movement_parameter - 1.0, 0.0)
-				advance_frame_offset()
-				frame_has_advanced = false
-			else:
-				frame = base_frame + current_frame_offset
+			move_to_new_tile(current_tile + Vector2i.LEFT, Vector2.LEFT)
 		elif Input.is_action_pressed("right"):
 			base_frame = 8
-			if is_tile_traversable(current_tile + Vector2i.RIGHT):
-				is_moving = true
-				origin_position = position
-				target_position = position + Vector2.RIGHT * real_tile_distance
-				movement_parameter = maxf(movement_parameter - 1.0, 0.0)
-				advance_frame_offset()
-				frame_has_advanced = false
-			else:
-				frame = base_frame + current_frame_offset
+			move_to_new_tile(current_tile + Vector2i.RIGHT, Vector2.RIGHT)
 		else:
 			movement_parameter = 0.0
+
+
+func move_to_new_tile(new_tile: Vector2i, direction: Vector2) -> void:
+	if is_tile_traversable(new_tile):
+		is_moving = true
+		origin_position = position
+		target_position = position + direction * real_tile_distance
+		movement_parameter = maxf(movement_parameter - 1.0, 0.0)
+		advance_frame_offset()
+		frame_has_advanced = false
+	else:
+		frame = base_frame + current_frame_offset
 
 
 func advance_frame_offset() -> void:
